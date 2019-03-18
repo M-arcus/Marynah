@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DropLoad</title>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <header class="dld-header">
+        <div class="container">
+            <h1>DropLoad</h1>
+            <p>Create a drop element for easy file upload.</p>
+            <img src="img/screen.jpeg">
+        </div>
+    </header>
+    <main class="dld-main">
+        <div class="container">
+            <form action="#" method="post" class="dld-form" enctype="multipart/form-data">
+                <div class="dropload" id="dropLoadSingle">
+                    <div class="dl-fallback">
+                        <label for="file">Drop File to upload</label>
+                        <input type="file" id="file" accept="image/*">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="js/app.js"></script>
+</body>
+</html>

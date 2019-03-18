@@ -1,0 +1,115 @@
+// colors
+$dl-gray-0: #FFF;
+$dl-gray-1: #ECEFF1;
+$dl-gray-2: #78909C;
+$dl-gray-3: #455A64;
+$dl-gray-4: #37474F;
+$dl-black: #000;
+
+// general
+$dl-master-selector: dropload;
+$dl-transition-speed: 0.2s !default;
+$dl-transition-ease: linear !default;
+
+// drop element
+$dl-elm-background-color: $dl-gray-2 !default;
+$dl-elm-border: 2px dashed $dl-gray-3 !default;
+$dl-elm-border-radius: 10px !default;
+$dl-elm-color: $dl-gray-0 !default;
+$dl-elm-height: 150px !default;
+$dl-elm-outer-spacing: 1rem 0;
+$dl-elm-inner-spacing: 15px !default;
+$dl-elm-transition: background-color $dl-transition-speed $dl-transition-ease !default;
+$dl-elm-width: 100% !default;
+$dl-elm-dragged-background: get-hover-color($dl-elm-background-color) !default;
+$dl-elm-error-background: $dl-elm-background-color !default;
+$dl-elm-error-border: 2px dashed #E53935 !default;
+
+// error messages
+$dl-err-color: #FFCDD2 !default;
+$dl-err-font-size: 0.9em !default;
+$dl-err-font-weight: 400 !default;
+$dl-err-outer-spacing: 0 0 0.3em !default;
+$dl-err-inner-spacing: 0 !default;
+$dl-err-text-align: center !default;
+$dl-err-width: 100% !default;
+
+// default message
+$dl-dm-color: $dl-gray-0 !default;
+$dl-dm-font-size: 1em !default;
+$dl-dm-font-weight: 400 !default;
+$dl-dm-outer-spacing: 0 0 0.3em !default;
+$dl-dm-text-align: center !default;
+$dl-dm-text-shadow: 0 0 3px rgba($dl-black, 0.4) !default;
+$dl-dm-width: 100% !default;
+
+// select button
+$dl-sbt-background: $dl-gray-1 !default;
+$dl-sbt-border: 0 !default;
+$dl-sbt-border-radius: 3px !default;
+$dl-sbt-box-shadow: 0 1px 3px rgba($dl-black, 0.2) !default;
+$dl-sbt-color: $dl-gray-4 !default;
+$dl-sbt-font-size: 0.85em !default;
+$dl-sbt-outer-spacing: 0 auto 0.3em !default;
+$dl-sbt-inner-spacing: 0.5em 0.8em !default;
+$dl-sbt-text-transform: uppercase !default;
+$dl-sbt-transition: background-color $dl-transition-speed $dl-transition-speed !default;
+$dl-sbt-active-background: get-active-color($dl-sbt-background) !default;
+$dl-sbt-active-border: 0 !default;
+$dl-sbt-active-color: $dl-sbt-color !default;
+$dl-sbt-hover-background: get-hover-color($dl-sbt-background) !default;
+$dl-sbt-hover-border: 0 !default;
+$dl-sbt-hover-color: $dl-sbt-color !default;
+
+// file list
+$dl-file-ul-list-style: none !default;
+$dl-file-ul-outer-spacing: 0 0 0 0.3em !default;
+$dl-file-ul-inner-spacing: 0 !default;
+$dl-file-ul-width: 100% !default;
+
+// file list item
+$dl-file-li-background: none !default;
+$dl-file-li-border-bottom: 1px solid $dl-gray-1 !default;
+$dl-file-li-list-style: $dl-file-ul-list-style !default;
+$dl-file-li-outer-spacing: 0 !default;
+$dl-file-li-inner-spacing: 0 !default;
+$dl-file-li-border-last: 0 !default;
+
+// file item
+$dl-file-item-alignment: center !default;
+$dl-file-item-direction: row !default;
+$dl-file-item-justify: flex-end !default;
+$dl-file-item-outer-spacing: 0 !default;
+$dl-file-item-inner-spacing: 5px 8px !default;
+$dl-file-item-width: 100% !default;
+
+// file item name
+$dl-fi-name-color: inherit !default;
+$dl-fi-name-font-size: inherit !default;
+$dl-fi-name-font-weight: inherit !default;
+$dl-fi-name-inner-spacing: 0 !default;
+
+// file item size
+$dl-fi-size-color: inherit !default;
+$dl-fi-size-font-size: inherit !default;
+$dl-fi-size-font-weight: inherit !default;
+$dl-fi-size-inner-padding: 0 1rem 0 0 !default;
+
+// file item remove button
+$fl-rbt-background: $dl-gray-3 !default;
+$dl-rbt-border: 0 !default;
+$dl-rbt-border-radius: 3px !default;
+$dl-rbt-color: $dl-gray-0 !default;
+$dl-rbt-font-size: 0.8em !default;
+$dl-rbt-font-weight: 400 !default;
+$dl-rbt-height: 1.8em !default;
+$dl-rbt-line-height: $dl-rbt-height !default;
+$dl-rbt-outer-spacing: 0 !default;
+$dl-rbt-inner-spacing: 0 0.8em !default;
+$dl-rbt-text-transform: uppercase !default;
+$dl-rbt-active-background: get-active-color($fl-rbt-background) !default;
+$dl-rbt-active-border: $dl-rbt-border !default;
+$dl-rbt-active-color: $dl-rbt-color !default;
+$dl-rbt-hover-background: get-hover-color($fl-rbt-background) !default;
+$dl-rbt-hover-border: $dl-rbt-border !default;
+$dl-rbt-hover-color: $dl-rbt-color !default;

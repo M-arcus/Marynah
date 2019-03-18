@@ -1,0 +1,16 @@
+{
+  "extends": "google",
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "script"
+  },
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "max-len": ["error", 100],
+    "object-curly-spacing": ["error", "always"],
+    "require-jsdoc": ["off"]
+  }
+}

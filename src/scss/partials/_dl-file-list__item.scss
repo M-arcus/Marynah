@@ -1,0 +1,11 @@
+@mixin dl-file-list__item {
+  background: $dl-file-li-background;
+  border-bottom: $dl-file-li-border-bottom;
+  list-style: $dl-file-li-list-style;
+  margin: $dl-file-li-outer-spacing;
+  padding: $dl-file-li-inner-spacing;
+
+  &:last-child {
+    border-bottom: $dl-file-li-border-last;
+  }
+}

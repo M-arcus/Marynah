@@ -1,0 +1,9 @@
+@mixin dl-file-item {
+  align-items: $dl-file-item-alignment;
+  display: flex;
+  flex-direction: $dl-file-item-direction;
+  justify-content: $dl-file-item-justify;
+  margin: $dl-file-item-outer-spacing;
+  padding: $dl-file-item-inner-spacing;
+  width: $dl-file-item-width;
+}

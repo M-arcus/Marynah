@@ -1,0 +1,8 @@
+@mixin dl-file-name {
+  color: $dl-fi-name-color;
+  font-size: $dl-fi-name-font-size;
+  font-weight: $dl-fi-name-font-weight;
+  margin-left: 0;
+  margin-right: auto;
+  padding: $dl-fi-name-inner-spacing;
+}

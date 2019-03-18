@@ -1,0 +1,28 @@
+@mixin dl-select-button {
+  background: $dl-sbt-background;
+  border: $dl-sbt-border;
+  border-radius: $dl-sbt-border-radius;
+  box-shadow: $dl-sbt-box-shadow;
+  color: $dl-sbt-color;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: $dl-sbt-font-size;
+  margin: $dl-sbt-outer-spacing;
+  padding: $dl-sbt-inner-spacing;
+  text-transform: $dl-sbt-text-transform;
+  transition: $dl-sbt-transition;
+
+  &:active {
+    background-color: $dl-sbt-active-background;
+    border: $dl-sbt-active-border;
+    color: $dl-sbt-active-color;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $dl-sbt-hover-background;
+    border: $dl-sbt-hover-border;
+    color: $dl-sbt-hover-color;
+    outline: 0;
+  }
+}

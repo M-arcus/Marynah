@@ -1,0 +1,45 @@
+@mixin dl-element {
+  align-items: center;
+  background-color: $dl-elm-background-color;
+  border: $dl-elm-border;
+  border-radius: $dl-elm-border-radius;
+  box-sizing: border-box;
+  color: $dl-elm-color;
+  display: flex;
+  flex-direction: column;
+  height: $dl-elm-height;
+  justify-content: center;
+  margin: $dl-elm-outer-spacing;
+  padding: $dl-elm-inner-spacing;
+  transition: $dl-elm-transition;
+  width: $dl-elm-width;
+
+  &.dl-dragged {
+    background-color: $dl-elm-dragged-background;
+  }
+
+  &.dl-error {
+    background-color: $dl-elm-error-background;
+    border: $dl-elm-error-border;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &.dl-initialized {
+    .dl-fallback {
+      height: 0;
+      overflow: hidden;
+      position: absolute;
+      visibility: hidden;
+      width: 0;
+    }
+  }
+
+  .dl-file-input {
+    display: none;
+  }
+}
