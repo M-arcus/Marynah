@@ -9,6 +9,11 @@ module.exports = {
     dist: 'dist/css',
     watch: 'src/scss/**/*.scss'
   },
+  css: {
+    src: 'src/css/**/*.css',
+    dist: 'dist/css',
+    watch: 'src/css/**/*.css'
+  },
   fonts: {
     src: 'src/fonts/**/*.*',
     dist: 'dist/fonts',

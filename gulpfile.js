@@ -5,14 +5,11 @@ const autoprefixer = require('autoprefixer');
 const browserSync = require('browser-sync').create();
 const sourceMaps = require('gulp-sourcemaps');
 const gulpSass = require('gulp-sass');
-const sassLint = require('gulp-sass-lint');
 const cssNano = require('cssnano');
 const postCSS = require('gulp-postcss');
 const plumber = require('gulp-plumber');
-const esLint = require('gulp-eslint');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
-const babel = require('gulp-babel');
 const imagemin = require('gulp-imagemin');
 const changed = require('gulp-changed');
 const gulp = require('gulp');
@@ -78,16 +75,7 @@ function copyImages() {
       .pipe(gulp.dest(CONFIG.images.dist));
 }
 
-// lint all styles
-function lintStyles() {
-  return gulp
-      .src([CONFIG.styles.src])
-      .pipe(plumber())
-      .pipe(sassLint())
-      .pipe(sassLint.format())
-      .pipe(sassLint.failOnError());
-}
-
+// generate scripts
 function scripts() {
   return (
     gulp
@@ -95,9 +83,6 @@ function scripts() {
         .pipe(plumber())
         // normal file
         .pipe(sourceMaps.init())
-        .pipe(babel({
-          presets: ['@babel/env']
-        }))
         .pipe(gulp.dest(CONFIG.scripts.dist))
         // minified
         .pipe(rename({ suffix: '.min' }))
@@ -112,23 +97,16 @@ function scripts() {
 }
 
 
-function lintScripts() {
-  return gulp
-      .src(CONFIG.scripts.src)
-      .pipe(plumber())
-      .pipe(esLint())
-      .pipe(esLint.format())
-      .pipe(esLint.failOnError());
-}
-
 // file watchers
 function watchFiles() {
-  gulp.watch(CONFIG.styles.watch, gulp.parallel(dlStyles, lintStyles));
-  gulp.watch(CONFIG.scripts.watch, gulp.parallel(scripts, lintScripts));
+  gulp.watch(CONFIG.styles.watch, gulp.parallel(dlStyles));
+  gulp.watch(CONFIG.scripts.watch, gulp.parallel(scripts));
   gulp.watch(CONFIG.html.watch, html, browserSyncReload);
   gulp.watch(CONFIG.fonts.watch, fonts, browserSyncReload);
+  gulp.watch(CONFIG.css.watch, copyCss, browserSyncReload);
 }
 
+// copy and minify html
 function copyHtml() {
   return (
     gulp
@@ -141,6 +119,7 @@ function copyHtml() {
   );
 }
 
+// copy font
 function copyFonts() {
   return (
     gulp
@@ -150,8 +129,17 @@ function copyFonts() {
   );
 }
 
-const js = gulp.parallel(scripts, lintScripts);
-const styles = gulp.parallel(dlStyles, lintStyles);
+// copy already generated css
+function copyCss() {
+  return (
+    gulp
+        .src(CONFIG.css.src)
+        .pipe(gulp.dest(CONFIG.css.dist))
+  );
+}
+
+const js = gulp.parallel(scripts);
+const styles = gulp.parallel(dlStyles, copyCss);
 const images = gulp.parallel(copyImages);
 const html = gulp.parallel(copyHtml);
 const fonts = gulp.parallel(copyFonts);

@@ -11,8 +11,6 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
     "autoprefixer": "^9.4.9",
     "browser-sync": "^2.26.3",
     "cssnano": "^4.1.10",
@@ -25,14 +23,12 @@
     "gulp-cli": "^2.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-environments": "^0.1.2",
-    "gulp-eslint": "^5.0.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^5.0.3",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "gulp-sass-lint": "^1.4.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.1",
     "yargs": "^13.2.2"
