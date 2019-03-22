@@ -8,4 +8,8 @@ yarn install
 
 ## Start
 
-gulp dev
+### For building all files
+yarn start
+
+### For developing
+yarn dev
