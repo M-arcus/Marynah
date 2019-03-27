@@ -1,7 +1,0 @@
-@function get-active-color($color) {
-  @return darken($color, 7%);
-}
-
-@function get-hover-color($color) {
-  @return lighten($color, 10%);
-}

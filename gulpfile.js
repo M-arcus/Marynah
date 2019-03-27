@@ -16,6 +16,7 @@ const gulp = require('gulp');
 const del = require('del');
 const htmlmin = require('gulp-htmlmin');
 const concat = require('gulp-concat');
+const injectPartials = require('gulp-inject-partials');
 
 // load config
 const CONFIG = require('./gulpfile.config');
@@ -42,37 +43,42 @@ function browserSyncReload(done) {
 }
 
 // compile styles specific for DropLoad
-function dlStyles() {
-  return gulp
-      .src(CONFIG.styles.src)
-      .pipe(plumber())
-      // normal file
-      .pipe(sourceMaps.init())
-      .pipe(gulpSass({ outputStyle: 'expanded' }))
-      .pipe(gulp.dest(CONFIG.styles.dist))
-      // minified versions
-      .pipe(rename({ suffix: '.min' }))
-      .pipe(postCSS([autoprefixer(['last 2 versions']), cssNano()]))
-      .pipe(gulp.dest(CONFIG.styles.dist))
-      // concatenated
-      .pipe(concat('app.css'))
-      .pipe(gulp.dest(CONFIG.styles.dist))
-      .pipe(browserSync.stream());
+function compileStyles() {
+  return (
+    gulp
+        .src(CONFIG.styles.src)
+        .pipe(plumber())
+        // normal file
+        .pipe(sourceMaps.init())
+        .pipe(gulpSass({ outputStyle: 'expanded' }))
+        .pipe(gulp.dest(CONFIG.styles.dist))
+        // minified versions
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(postCSS([autoprefixer(['last 2 versions']), cssNano()]))
+        .pipe(gulp.dest(CONFIG.styles.dist))
+        // concatenated
+        .pipe(concat('app.css'))
+        .pipe(gulp.dest(CONFIG.styles.dist))
+        .pipe(browserSync.stream())
+  );
 }
 
 // generate images
 function copyImages() {
-  return gulp.src(CONFIG.images.src)
-      .pipe(changed(CONFIG.images.dist))
-      .pipe(gulp.dest(CONFIG.images.dist))
-      .pipe(imagemin({
-        optimizationLevel: 5,
-        progressive: true,
-        svgoPlugins: [{ removeViewBox: false }],
-        interlaced: true
-      }))
-      .pipe(rename({ suffix: '_minified' }))
-      .pipe(gulp.dest(CONFIG.images.dist));
+  return (
+    gulp.src(CONFIG.images.src)
+        .pipe(changed(CONFIG.images.dist))
+        .pipe(gulp.dest(CONFIG.images.dist))
+        .pipe(imagemin({
+          optimizationLevel: 5,
+          progressive: true,
+          svgoPlugins: [{ removeViewBox: false }],
+          interlaced: true
+        }))
+        .pipe(rename({ suffix: '_minified' }))
+        .pipe(gulp.dest(CONFIG.images.dist))
+        .pipe(browserSync.stream())
+  );
 }
 
 // generate scripts
@@ -96,21 +102,12 @@ function scripts() {
   );
 }
 
-
-// file watchers
-function watchFiles() {
-  gulp.watch(CONFIG.styles.watch, gulp.parallel(dlStyles));
-  gulp.watch(CONFIG.scripts.watch, gulp.parallel(scripts));
-  gulp.watch(CONFIG.html.watch, html, browserSyncReload);
-  gulp.watch(CONFIG.fonts.watch, fonts, browserSyncReload);
-  gulp.watch(CONFIG.css.watch, copyCss, browserSyncReload);
-}
-
 // copy and minify html
 function copyHtml() {
   return (
     gulp
         .src(CONFIG.html.src)
+        .pipe(injectPartials())
         .pipe(gulp.dest(CONFIG.html.dist))
         .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(rename({ suffix: '_min' }))
@@ -135,11 +132,21 @@ function copyCss() {
     gulp
         .src(CONFIG.css.src)
         .pipe(gulp.dest(CONFIG.css.dist))
+        .pipe(browserSync.stream())
   );
 }
 
+// file watchers
+function watchFiles() {
+  gulp.watch(CONFIG.styles.watch, compileStyles, browserSyncReload);
+  gulp.watch(CONFIG.scripts.watch, scripts, browserSyncReload);
+  gulp.watch(CONFIG.html.watch, html, browserSyncReload);
+  gulp.watch(CONFIG.fonts.watch, fonts, browserSyncReload);
+  gulp.watch(CONFIG.css.watch, styles, browserSyncReload);
+}
+
 const js = gulp.parallel(scripts);
-const styles = gulp.parallel(dlStyles, copyCss);
+const styles = gulp.parallel(compileStyles, copyCss);
 const images = gulp.parallel(copyImages);
 const html = gulp.parallel(copyHtml);
 const fonts = gulp.parallel(copyFonts);

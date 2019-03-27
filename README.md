@@ -1,15 +1,24 @@
-## License
+# 🏝️ Marynah 🏝️
 
-See [here](https://github.com/KonradRolof/DropLoad/blob/master/LICENSE)
+A simple GULP setup
 
-## Install
+## Installation
 
+Clone the repo into a folder, navigate into the folder and execute 
+```
 yarn install
+```
 
-## Start
+## For development
 
-### For building all files
-yarn start
-
-### For developing
+This command generates all files, opens the page in the browser and watches for changes 
+```
 yarn dev
+```
+
+## For building
+
+This command generates all files
+```
+yarn start
+```

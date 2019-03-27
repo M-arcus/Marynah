@@ -22,7 +22,7 @@ module.exports = {
   html: {
     src: 'src/*.html',
     dist: 'dist',
-    watch: 'src/*.html'
+    watch: 'src/**/*.html'
   },
   images: {
     src: 'src/img/**/*.*',

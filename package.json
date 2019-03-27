@@ -24,6 +24,7 @@
     "gulp-environments": "^0.1.2",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^5.0.3",
+    "gulp-inject-partials": "^1.0.5",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
