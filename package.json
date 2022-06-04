@@ -36,7 +36,7 @@
     "nth-check": "^2.0.1",
     "postcss": "^8.3.0",
     "sass": "^1.51.0",
-    "semver-regex": "^4.0.2",
+    "semver-regex": "^4.0.3",
     "tar": "^6.1.11",
     "trim-newlines": "^4.0.2",
     "yargs": "^17.4.1"
