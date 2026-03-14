@@ -25,7 +25,7 @@ module.exports = {
     watch: 'src/**/*.html'
   },
   images: {
-    src: 'src/img/**/*.*',
+    src: 'src/img/**/*.{png,jpg,jpeg,gif,webp}',
     dist: 'dist/img'
   },
   clean: [

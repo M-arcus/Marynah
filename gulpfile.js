@@ -11,6 +11,7 @@ const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
+const imageminWebp = require('imagemin-webp');
 const changed = require('gulp-changed');
 const gulp = require('gulp');
 const del = require('del');
@@ -69,12 +70,12 @@ function copyImages() {
     gulp.src(CONFIG.images.src)
         .pipe(changed(CONFIG.images.dist))
         .pipe(gulp.dest(CONFIG.images.dist))
-        .pipe(imagemin({
-          optimizationLevel: 5,
-          progressive: true,
-          svgoPlugins: [{ removeViewBox: false }],
-          interlaced: true
-        }))
+        .pipe(imagemin([
+          imagemin.gifsicle({ interlaced: true }),
+          imagemin.mozjpeg({ progressive: true }),
+          imagemin.optipng({ optimizationLevel: 5 }),
+          imageminWebp({ quality: 75 })
+        ]))
         .pipe(rename({ suffix: '_minified' }))
         .pipe(gulp.dest(CONFIG.images.dist))
         .pipe(browserSync.stream())
